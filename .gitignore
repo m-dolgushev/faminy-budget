@@ -26,7 +26,9 @@ coverage
 *.lcov
 
 # IDE
-*.idea
+.idea/
+.fleet/
+.DS_Store
 
 # nyc test coverage
 .nyc_output
@@ -79,10 +81,12 @@ web_modules/
 
 # dotenv environment variable files
 .env
+.env.*
 .env.development.local
 .env.test.local
 .env.production.local
 .env.local
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -107,7 +111,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Docusaurus cache and generated files
 .docusaurus
@@ -136,3 +139,11 @@ dist
 
 pages/_studio/
 
+# Docker / runtime secrets
+secrets/
+*.pem
+*.key
+
+# Supabase local/dev artifacts
+.supabase/
+supabase/.temp/

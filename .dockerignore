@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.idea
+npm-debug.log
+Dockerfile*
+docker-compose*.yml
+*.local
+secrets

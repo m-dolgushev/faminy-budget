@@ -1,8 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { formatCurrency, getTotalCapital } from "@/lib/budget/data";
+import { formatCurrency, useBudget } from "@/components/budget/budget-provider";
 import {
   CalendarClock,
   Landmark,
@@ -48,13 +50,17 @@ export function BudgetNavigation({ currentPath }: BudgetNavigationProps) {
 }
 
 export function BudgetHeader() {
+  const { totalCapital, totalBalance, totalInvestmentsValue, totalDebt } = useBudget();
+
   return (
     <Card>
       <CardHeader>
         <CardDescription>Общий капитал</CardDescription>
-        <CardTitle className="text-2xl">{formatCurrency(getTotalCapital())}</CardTitle>
+        <CardTitle className="text-2xl">{formatCurrency(totalCapital)}</CardTitle>
       </CardHeader>
       <CardContent className="pt-0 text-sm text-muted-foreground">
+        Баланс: {formatCurrency(totalBalance)} • Инвестиции: {formatCurrency(totalInvestmentsValue)} •
+        Долги: {formatCurrency(totalDebt)}
       </CardContent>
     </Card>
   );

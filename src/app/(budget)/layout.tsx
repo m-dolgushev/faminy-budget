@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { BudgetHeader, BudgetNavigation } from "@/components/budget/BudgetManager";
+import { BudgetProvider } from "@/components/budget/budget-provider";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 
@@ -42,11 +43,13 @@ export default async function BudgetLayout({ children }: { children: ReactNode }
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container space-y-6 py-6">
-        <BudgetHeader />
-        <BudgetNavigation currentPath={pathname} />
-        {children}
-      </main>
+      <BudgetProvider>
+        <main className="container space-y-6 py-6">
+          <BudgetHeader />
+          <BudgetNavigation currentPath={pathname} />
+          {children}
+        </main>
+      </BudgetProvider>
       <Footer />
     </div>
   );

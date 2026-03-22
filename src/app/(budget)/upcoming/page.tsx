@@ -1,9 +1,24 @@
+"use client";
+
+import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { formatCurrency, getUpcomingWithLoans } from "@/lib/budget/data";
+import { formatCurrency, useBudget } from "@/components/budget/budget-provider";
 
 export default function UpcomingPage() {
-  const items = getUpcomingWithLoans();
+  const { upcomingExpenses, loans } = useBudget();
+
+  const items = useMemo(() => {
+    const loanPayments = loans.map((loan) => ({
+      id: `loan_${loan.id}`,
+      name: `Платеж по кредиту: ${loan.name}`,
+      amount: loan.monthlyPayment,
+      dueDate: loan.startDate.slice(0, 7) + "-25",
+      priority: "high" as const,
+      isLoan: true,
+    }));
+    return [...upcomingExpenses, ...loanPayments].sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  }, [upcomingExpenses, loans]);
 
   return (
     <section className="space-y-4">

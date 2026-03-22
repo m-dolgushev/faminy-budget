@@ -96,9 +96,45 @@ export const upcomingExpenses: UpcomingExpense[] = [
 ];
 
 export const investments: Investment[] = [
-  { id: "i1", ticker: "SBER", name: "Сбербанк", quantity: 100, price: 270.5 },
-  { id: "i2", ticker: "LKOH", name: "Лукойл", quantity: 50, price: 7100 },
-  { id: "i3", ticker: "GMKN", name: "Норникель", quantity: 10, price: 14500 },
+  {
+    id: "i1",
+    ticker: "SBER",
+    name: "Сбербанк",
+    quantity: 100,
+    price: 270.5,
+    history: [
+      { date: "2026-03-01", price: 255.1 },
+      { date: "2026-03-08", price: 262.8 },
+      { date: "2026-03-15", price: 267.3 },
+      { date: "2026-03-22", price: 270.5 },
+    ],
+  },
+  {
+    id: "i2",
+    ticker: "LKOH",
+    name: "Лукойл",
+    quantity: 50,
+    price: 7100,
+    history: [
+      { date: "2026-03-01", price: 6870 },
+      { date: "2026-03-08", price: 6950 },
+      { date: "2026-03-15", price: 7030 },
+      { date: "2026-03-22", price: 7100 },
+    ],
+  },
+  {
+    id: "i3",
+    ticker: "GMKN",
+    name: "Норникель",
+    quantity: 10,
+    price: 14500,
+    history: [
+      { date: "2026-03-01", price: 13950 },
+      { date: "2026-03-08", price: 14120 },
+      { date: "2026-03-15", price: 14310 },
+      { date: "2026-03-22", price: 14500 },
+    ],
+  },
 ];
 
 export const loans: Loan[] = [
@@ -112,6 +148,12 @@ export const loans: Loan[] = [
     termMonths: 240,
     startDate: "2023-01-15",
     monthlyPayment: 46608,
+    history: [
+      { date: "2025-12-22", balance: 4920000 },
+      { date: "2026-01-22", balance: 4880000 },
+      { date: "2026-02-22", balance: 4840000 },
+      { date: "2026-03-22", balance: 4800000 },
+    ],
   },
   {
     id: "l2",
@@ -123,6 +165,12 @@ export const loans: Loan[] = [
     termMonths: 12,
     startDate: "2025-09-01",
     monthlyPayment: 10000,
+    history: [
+      { date: "2025-12-01", balance: 90000 },
+      { date: "2026-01-01", balance: 80000 },
+      { date: "2026-02-01", balance: 70000 },
+      { date: "2026-03-01", balance: 60000 },
+    ],
   },
 ];
 

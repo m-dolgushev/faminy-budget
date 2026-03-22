@@ -1,8 +1,13 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { formatCurrency, savings } from "@/lib/budget/data";
+import { formatCurrency, useBudget } from "@/components/budget/budget-provider";
 
 export default function SavingsPage() {
+  const { savings, updateSaving } = useBudget();
+
   return (
     <section className="space-y-4">
       <h1 className="text-2xl font-bold">Копилки</h1>
@@ -22,6 +27,17 @@ export default function SavingsPage() {
               <CardContent className="space-y-3">
                 <Progress value={percent} />
                 <p className="text-sm">Накоплено: {formatCurrency(goal.current)}</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button size="sm" variant="outline" onClick={() => updateSaving(goal.id, -1000)}>
+                    -1k
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={() => updateSaving(goal.id, 1000)}>
+                    +1k
+                  </Button>
+                  <Button size="sm" onClick={() => updateSaving(goal.id, 5000)}>
+                    +5k
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           );

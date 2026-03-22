@@ -55,6 +55,10 @@ export interface Investment {
   name: string;
   quantity: number;
   price: number;
+  history: {
+    date: string;
+    price: number;
+  }[];
 }
 
 export interface FamilyMember {
@@ -78,4 +82,8 @@ export interface Loan {
   termMonths: number;
   startDate: string;
   monthlyPayment: number;
+  history: {
+    date: string;
+    balance: number;
+  }[];
 }
